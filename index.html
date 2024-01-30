@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Email Restriction</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+	<img src="https://avatars.githubusercontent.com/u/33932322?v=4" class="logo" alt="Company Name">
+	<h1 class="slogan">YourCompanyName</h1>
+
+	<div class="box1">
+
+
+	</div>
+
+	<!--	Sign Up-->
+	<div class="box visible" id="signup">
+		<span class="title" title="Sign Up"></span>
+		<span class="title sign" title="Sign In" style="right:0px;transform: translate(60%, 15px);" onclick="toggleDivs()"></span>
+		<form action="" method="POST" class="form">
+			<label class="inputButton" title="First Name">
+				<input type="text" name="firstname" placeholder="Firt Name" required>
+			</label>
+			<br>
+			<label class="inputButton" title="Last Name">
+				<input type="text" name="lastname" placeholder="Last Name" required>
+			</label>
+			<br>
+			<label class="inputButton" title="Email">
+				<input type="email" id='restriction' name="email" placeholder="Type your email" required>
+			</label>
+
+			<br>
+			<label class="inputButton" title="Password">
+				<input type="password" name="password" placeholder="*********" required min="8" id="password1">
+				<span id="hideShowEmoji" onclick="togglePasswordVisibility('password1')">🙈</span>
+				<span id="generateBtn" onclick="generatePassword()">🔐</span>
+			</label>
+			<br>
+
+			<label class="inputButton" title="Date of Birth">
+				<input type="date" name="date" required>
+			</label>
+			<br>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<!--	Sign In-->
+
+	<div class="box hidden" id="signin">
+		<span class="title" title="Sign In"></span>
+		<span class="title sign" title="Sign Up" onclick="toggleDivs()" style="right:0px;transform: translate(60%, 15px);"></span>
+		<form action="" method="GET" class="form">
+			<label class="inputButton" title="Email">
+				<input type="email" id='restriction' name="email" placeholder="Type your email" required>
+			</label>
+			<br>
+			<label class="inputButton" title="Password">
+				<input type="password" name="password" placeholder="*********" required min="8" id="password2">
+				<span id="hideShowEmoji" onclick="togglePasswordVisibility('password2')">🙈</span>
+
+			</label>
+
+			<br>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+
+
+	<span class="github"> <a href="https://github.com/mjafory/SignInOut">Github</a> </span>
+
+	<script>
+		//password generator
+		function generatePassword() {
+			const length = 16;
+			const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=";
+			let password = "";
+
+			for (let i = 0; i < length; i++) {
+				const randomIndex = Math.floor(Math.random() * charset.length);
+				password += charset.charAt(randomIndex);
+			}
+
+			document.getElementById("password1").value = password;
+		}
+
+
+		//toggle the visibility of their passwords
+		function togglePasswordVisibility(passwordId) {
+			const passwordInput = document.getElementById(passwordId);
+			const hideShowEmoji = document.querySelector(`[onclick="togglePasswordVisibility('${passwordId}')"]`);
+
+			if (passwordInput.type === "password") {
+				passwordInput.type = "text";
+				hideShowEmoji.textContent = "🙉";
+			} else {
+				passwordInput.type = "password";
+				hideShowEmoji.textContent = "🙈";
+			}
+		}
+
+
+		// Toggle visibility
+		function toggleDivs() {
+			var div1 = document.getElementById('signup');
+			var div2 = document.getElementById('signin');
+
+
+			div1.classList.toggle('visible');
+			div1.classList.toggle('hidden');
+			div2.classList.toggle('visible');
+			div2.classList.toggle('hidden');
+		}
+
+	</script>
+
+</body>
+
+</html>
