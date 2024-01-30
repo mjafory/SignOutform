@@ -11,7 +11,7 @@ This project provides a simple Sign Up and Sign In interface with password gener
 
 ## Demo
 
-Include a GIF or screenshot of your application in action.
+[Demo!](https://mjafory.github.io/SignOutform)
 
 
 ### Prerequisites
